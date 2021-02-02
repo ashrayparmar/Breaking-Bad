@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import axios from 'axios';
+import Character from './Character'
 
 function App() {
+
+  const  [items, setItems] = useState([]);
+
+  useEffect(() => {
+
+    const getCharacters = async () => {
+
+      const result = await axios(`https://www.breakingbadapi.com/api/characters`);
+      setItems(result.data);
+    };
+    
+    getCharacters();
+
+  }, []);
+
+  function clickHandler() {
+    
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Character items={items} />
+
     </div>
   );
 }
