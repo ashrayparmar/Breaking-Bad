@@ -5,27 +5,48 @@ import Character from './Character'
 
 function App() {
 
+  const [resource, setResource] = useState('');
   const  [items, setItems] = useState([]);
 
   useEffect(() => {
 
-    const getCharacters = async () => {
+      fetch(`https://www.breakingbadapi.com/api/${resource}`)
+      .then(res => res.json())
+      .then(json => setItems(json))
 
-      const result = await axios(`https://www.breakingbadapi.com/api/characters`);
-      setItems(result.data);
-    };
+
+
+
+
+    // const getCharacters = async () => {
+
+    //   // const result = await axios(`https://www.breakingbadapi.com/api/episodes`);
+    //   // console.log(result.data);
+    //   // setItems(result.data);
+    // };
     
-    getCharacters();
+    // getCharacters();
 
-  }, []);
+  }, [resource]);
 
   function clickHandler() {
-    
+  
   }
 
   return (
     <div className="App">
-    <Character items={items} />
+
+    <button onClick={ () => {setResource('characters')}}>Characters</button>
+
+    <button onClick={ () => {setResource('episodes')}}>Episodes</button>
+
+    <h1>{resource}</h1>
+
+      {items.map(item => {
+        return (
+          <pre>{JSON.stringify(item)}</pre>
+        )
+      })}
 
     </div>
   );
