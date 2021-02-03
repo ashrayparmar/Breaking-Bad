@@ -1,4 +1,5 @@
 import React from 'react'
+import CharacterItem from './CharacterItem';
 
 const Character = ({items}) => {
     return (
@@ -6,7 +7,8 @@ const Character = ({items}) => {
         <section className='cards'>
         {items.map(function(item) {
             return (
-            <h1>{item.name}</h1>
+                <CharacterItem key={item.char_id} item={item}></CharacterItem>
+            
            )
         })}
         </section>
