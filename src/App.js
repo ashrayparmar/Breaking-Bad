@@ -23,14 +23,14 @@ function App() {
 
       <Header />
 
-      <button className='btn' onClick={ () => {setResource('characters')}}>Characters</button>
+      <button className='btn' onClick={ () => {setResource('Characters')}}>Characters</button>
 
-      <button className='btn' onClick={ () => {setResource('episodes')}}>Episodes</button>
+      <button className='btn' onClick={ () => {setResource('Episodes')}}>Episodes</button>
 
       <h1>{resource}</h1>
 
       {
-        resource === 'characters' ? <Character items={items} /> : null
+        resource === 'Characters' ? <Character items={items} /> : null
       }
 
     </div>

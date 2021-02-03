@@ -23,14 +23,15 @@ a {
 }
 
 .btn {
-  display: inline-block;
+  display: block;
   color: #fff;
   background-color: #3fb573;
   font-size: 1em;
   text-align: center;
   padding: 10px 15px;
   border: 0;
-  margin: 10px 10px;
+  margin: auto;
+  margin-top: 10px;
 }
 
 header {
