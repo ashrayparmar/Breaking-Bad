@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import axios from 'axios';
 import Character from './Character'
+import Episode from './Episode';
+import Header from './Header'
 
 function App() {
 
@@ -13,40 +14,24 @@ function App() {
       fetch(`https://www.breakingbadapi.com/api/${resource}`)
       .then(res => res.json())
       .then(json => setItems(json))
-
-
-
-
-
-    // const getCharacters = async () => {
-
-    //   // const result = await axios(`https://www.breakingbadapi.com/api/episodes`);
-    //   // console.log(result.data);
-    //   // setItems(result.data);
-    // };
     
-    // getCharacters();
-
-  }, [resource]);
-
-  function clickHandler() {
-  
-  }
+    }, [resource]);
 
   return (
-    <div className="App">
+    
+    <div className='container'>
 
-    <button onClick={ () => {setResource('characters')}}>Characters</button>
+      <Header />
 
-    <button onClick={ () => {setResource('episodes')}}>Episodes</button>
+      <button className='btn' onClick={ () => {setResource('characters')}}>Characters</button>
 
-    <h1>{resource}</h1>
+      <button className='btn' onClick={ () => {setResource('episodes')}}>Episodes</button>
 
-      {items.map(item => {
-        return (
-          <pre>{JSON.stringify(item)}</pre>
-        )
-      })}
+      <h1>{resource}</h1>
+
+      {
+        resource === 'characters' ? <Character items={items} /> : null
+      }
 
     </div>
   );
